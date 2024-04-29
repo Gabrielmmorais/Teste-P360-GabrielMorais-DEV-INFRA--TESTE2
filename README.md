@@ -13,12 +13,12 @@ Este documento descreve uma solução completa para automatizar a execução de 
 - Script Python com Selenium para web scraping.
 
   ## Arquitetura de Solução
-
+![TESTE2-ARCHI drawio (2)](https://github.com/Gabrielmmorais/Teste-P360-GabrielMorais-DEV-INFRA--TESTE2/assets/79981718/7362c189-0ebf-4493-b529-1d9a10a50c5b)
 
 
   ## 1. Instalação do Terraform
 
-  1\.1. Faça o download e a instalação do Terraform a partir do site oficial, seguindo as instruções fornecidas para o seu sistema operacional.
+  ### 1\.1. Faça o download e a instalação do Terraform a partir do site oficial, seguindo as instruções fornecidas para o seu sistema operacional.
 
 
   ## 2. Estrutura do Projeto Terraform
@@ -32,7 +32,7 @@ Este documento descreve uma solução completa para automatizar a execução de 
 
   ## 3. Configuração do Terraform e Armazenamento no Amazon S3
 
-  3\.1. No arquivo **main.tf**, configure os recursos da AWS, incluindo a função Lambda, o IAM e quaisquer permissões necessárias.
+  ### 3\.1. No arquivo **main.tf**, configure os recursos da AWS, incluindo a função Lambda, o IAM e quaisquer permissões necessárias.
 
   Exemplo de **main.tf**:
 
@@ -56,7 +56,7 @@ Este documento descreve uma solução completa para automatizar a execução de 
 
   ## Defina outras configurações do Terraform conforme necessário
 
-  3\.2. No arquivo **variables.tf**, defina as variáveis necessárias, como o nome da função Lambda, a região da AWS, entre outras.
+  ### 3\.2. No arquivo **variables.tf**, defina as variáveis necessárias, como o nome da função Lambda, a região da AWS, entre outras.
 
   Exemplo de **variables.tf**:
 
@@ -78,17 +78,17 @@ Este documento descreve uma solução completa para automatizar a execução de 
 
   ## Defina outras variáveis do Terraform conforme necessário
 
-  3\.3. Faça o upload dos arquivos do Terraform (como **main.tf**, **variables.tf**, etc.) e quaisquer outros arquivos necessários para um bucket do Amazon S3.
+  ### 3\.3. Faça o upload dos arquivos do Terraform (como **main.tf**, **variables.tf**, etc.) e quaisquer outros arquivos necessários para um bucket do Amazon S3.
 
 
   ## 4. Empacotamento do Script Python
 
-  4\.1. Empacote o script Python com Selenium, juntamente com quaisquer dependências necessárias, em um arquivo ZIP chamado **lambda\_function.zip**.
+  ### 4\.1. Empacote o script Python com Selenium, juntamente com quaisquer dependências necessárias, em um arquivo ZIP chamado **lambda\_function.zip**.
 
 
   ## 5. Configuração do AWS Step Functions
 
-  5\.1. Configure um fluxo de trabalho no AWS Step Functions para orquestrar o processo de automação. O fluxo de trabalho deve incluir as seguintes etapas:
+  ### 5\.1. Configure um fluxo de trabalho no AWS Step Functions para orquestrar o processo de automação. O fluxo de trabalho deve incluir as seguintes etapas:
 
 - **CriarRecursosTerraform:** Esta etapa executará o Terraform para criar os recursos na AWS.
 - **DeployLambda:** Após a criação dos recursos pelo Terraform, esta etapa implantará a função Lambda na AWS.
@@ -96,14 +96,14 @@ Este documento descreve uma solução completa para automatizar a execução de 
 - **DestruirRecursosTerraform:** Após a execução bem-sucedida da automação e, possivelmente, um período de tempo especificado, esta etapa executará o Terraform novamente para destruir os recursos provisionados na AWS.
 - **RetornoAoEstadoInicial:** Configure uma transição de volta ao estado inicial após a conclusão bem-sucedida do processo, permitindo que o fluxo de trabalho reinicie automaticamente.
 
-  5\.2. Configure as transições entre as etapas do fluxo de trabalho, garantindo que cada etapa seja executada na ordem correta.
+  ### 5\.2. Configure as transições entre as etapas do fluxo de trabalho, garantindo que cada etapa seja executada na ordem correta.
 
 
   ## 6. Execução Automatizada
 
-  6\.1. Configure um evento no Amazon CloudWatch Events para acionar o fluxo de trabalho do AWS Step Functions em intervalos regulares, por exemplo, a cada hora.
+  ### 6\.1. Configure um evento no Amazon CloudWatch Events para acionar o fluxo de trabalho do AWS Step Functions em intervalos regulares, por exemplo, a cada hora.
 
-  6\.2. Monitore a execução automatizada e ajuste conforme necessário.
+  ### 6\.2. Monitore a execução automatizada e ajuste conforme necessário.
 
 
   ## Relatório Final
